@@ -19,3 +19,7 @@ Docs for crates used:
   - derive
   - wrap_help
 - (reqwest)[https://docs.rs/reqwest/0.11.4/reqwest/]
+- (dotenv)[https://docs.rs/dotenv]
+
+
+# resume at https://youtu.be/jMmDpR8mask?t=1859
