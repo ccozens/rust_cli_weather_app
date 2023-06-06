@@ -22,4 +22,4 @@ Docs for crates used:
 - (dotenv)[https://docs.rs/dotenv]
 
 
-# resume at https://youtu.be/jMmDpR8mask?t=1859
+# resume at https://youtu.be/jMmDpR8mask?t=2511
