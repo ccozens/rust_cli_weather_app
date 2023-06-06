@@ -23,3 +23,7 @@ Docs for crates used:
 
 
 # resume at https://youtu.be/jMmDpR8mask?t=2511
+
+
+Blocking
+blocking means your app is waiting for data from the OS. Computers can process really fast - even 3 ns adds to lag. This is time the CPU could be processing other instructions.

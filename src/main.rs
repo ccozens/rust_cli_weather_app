@@ -1,6 +1,7 @@
 use dotenv;
 use clap::{Parser};
 use reqwest;
+use serde::Deserialize;
 
 const LAT: f32 = 52.636709;
 const LON: f32 = -1.13557;
@@ -14,6 +15,40 @@ struct Args {
     #[arg(short, default_value_t = 0)]
     days: u8,
 }
+#[derive(Deserialize, Debug)]
+
+struct Coord {
+    lon: f32,
+    lat: f32,
+}
+#[derive(Deserialize, Debug)]
+
+struct Weather {
+    id: u32,
+    main: String,
+    description: String,
+    icon: String,
+}
+#[derive(Deserialize, Debug)]
+
+struct CurrentWeatherMain {
+    temp: f32,
+    feels_like: f32,
+    temp_min: f32,
+    temp_max: f32,
+    // pressure: u32,
+    humidity: u32,
+    // sea_level: u32,
+    // grnd_level: u32,
+}
+
+#[derive(Deserialize, Debug)]
+struct CurrentWeather {
+    coord: Coord,
+    weather: Weather,
+    base: String,
+    main: CurrentWeatherMain,
+    }
 
 
 fn main() -> Result<(), reqwest::Error> {
@@ -47,10 +82,11 @@ let count = args.days * 8;
 
     let url: String = format!("https://api.openweathermap.org/data/2.5/forecast?lat={LAT}&lon={LON}&appid={api_key}&units=metric&cnt={count}");
 
-    let body = reqwest::blocking::get(url)?
-    .bytes()?;
+    let body: CurrentWeather = reqwest::blocking::get(url)?
+    .json()?;
 
     println!("body = {:?}", body);
+    
 
     // println!("{}", args.days);
     Ok(())
