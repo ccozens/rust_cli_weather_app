@@ -1,7 +1,7 @@
 # Building a Weather Forecast Command-Line App in Rust
 
 I'm new to rust and decided to gain familiarity using some tutorials, rather than my usual approach of exhaustively taking notes on things.
-I've chosen (Building a Weather Forecast Command-Line App in Rust)[https://www.youtube.com/watch?v=jMmDpR8mask] by Tim McNamara after hearing hom on syntax.fm.
+I've chosen (Building a Weather Forecast Command-Line App in Rust](https://www.youtube.com/watch?v=jMmDpR8mask] by Tim McNamara after hearing hom on syntax.fm.
 
 ## Plan
 
@@ -13,17 +13,17 @@ I've chosen (Building a Weather Forecast Command-Line App in Rust)[https://www.y
 ## New rust app
 `cargo new <app_name>`
 
-Docs for crates used:
-- (clap)[https://docs.rs/clap/2.33.3/clap/]
+## Docs for crates used:
+- (clap](https://docs.rs/clap/2.33.3/clap/)
   - Parser
   - derive
   - wrap_help
-- (reqwest)[https://docs.rs/reqwest/0.11.4/reqwest/]
-- (dotenv)[https://docs.rs/dotenv]
+- (reqwest](https://docs.rs/reqwest/0.11.4/reqwest/)
+- (dotenv](https://docs.rs/dotenv)
+- (serde](https://docs.rs/serde/1.0.126/serde/)
 
 
-# resume at https://youtu.be/jMmDpR8mask?t=2511
 
-
-Blocking
-blocking means your app is waiting for data from the OS. Computers can process really fast - even 3 ns adds to lag. This is time the CPU could be processing other instructions.
+## Final output
+`cargo run`
+-> _a bunch of debug messages from unused variables_ and then *10.37 "overcast clouds"*
