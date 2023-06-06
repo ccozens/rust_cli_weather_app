@@ -24,7 +24,7 @@ struct Coord {
 #[derive(Deserialize, Debug)]
 
 struct Weather {
-    id: u32,
+    id: i32,
     main: String,
     description: String,
     icon: String,
@@ -37,7 +37,7 @@ struct CurrentWeatherMain {
     temp_min: f32,
     temp_max: f32,
     // pressure: u32,
-    humidity: u32,
+    humidity: f32,
     // sea_level: u32,
     // grnd_level: u32,
 }
@@ -45,7 +45,7 @@ struct CurrentWeatherMain {
 #[derive(Deserialize, Debug)]
 struct CurrentWeather {
     coord: Coord,
-    weather: Weather,
+    weather: Vec<Weather>,
     base: String,
     main: CurrentWeatherMain,
     }
@@ -70,17 +70,17 @@ fn main() -> Result<(), reqwest::Error> {
     
     let api_key: String = api_key.unwrap();
     
-    let args = Args::parse();
+    let args: Args = Args::parse();
 
-let method = match args.days {
-    0 => "weather",
-    _ => "forecast",
-};
-let count = args.days * 8;
+    let method: &str = match args.days {
+        0 => "weather",
+        _ => "forecast",
+    };
+    let count: u8 = args.days * 8;
 
 
 
-    let url: String = format!("https://api.openweathermap.org/data/2.5/forecast?lat={LAT}&lon={LON}&appid={api_key}&units=metric&cnt={count}");
+    let url: String = format!("https://api.openweathermap.org/data/2.5/{method}?lat={LAT}&lon={LON}&appid={api_key}&units=metric&cnt={count}");
 
     let body: CurrentWeather = reqwest::blocking::get(url)?
     .json()?;
