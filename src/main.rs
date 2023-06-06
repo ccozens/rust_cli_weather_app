@@ -46,7 +46,7 @@ struct CurrentWeatherMain {
 struct CurrentWeather {
     coord: Coord,
     weather: Vec<Weather>,
-    base: String,
+    // base: String,
     main: CurrentWeatherMain,
     }
 
@@ -82,10 +82,11 @@ fn main() -> Result<(), reqwest::Error> {
 
     let url: String = format!("https://api.openweathermap.org/data/2.5/{method}?lat={LAT}&lon={LON}&appid={api_key}&units=metric&cnt={count}");
 
-    let body: CurrentWeather = reqwest::blocking::get(url)?
+    let weather: CurrentWeather = reqwest::blocking::get(url)?
     .json()?;
 
-    println!("body = {:?}", body);
+    println!("body = {:?}", weather);
+    println!("{} {:?}", weather.main.temp, weather.weather[0].description);
     
 
     // println!("{}", args.days);
